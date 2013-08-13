@@ -11,7 +11,6 @@ import java.util.Scanner;
 import org.jboss.pressgang.ccms.contentspec.ContentSpec;
 import org.jboss.pressgang.ccms.contentspec.migratetool.Migrator;
 import org.jboss.pressgang.ccms.contentspec.migratetool.SQLGenerator;
-import org.jboss.pressgang.ccms.contentspec.migratetool.TranslationMigrator;
 import org.jboss.pressgang.ccms.provider.DataProviderFactory;
 import org.jboss.pressgang.ccms.provider.RESTProviderFactory;
 import org.jboss.pressgang.ccms.provider.TopicProvider;
@@ -37,14 +36,13 @@ public class Main {
                 "http://localhost:8080/pressgang-ccms/rest/");
         final SQLGenerator generator = new SQLGenerator();
         final Migrator migrator = new Migrator(providerFactory);
-        final TranslationMigrator translationMigrator = new TranslationMigrator(providerFactory, createZanataDetails());
+        //final TranslationMigrator translationMigrator = new TranslationMigrator(providerFactory, createZanataDetails());
         final TopicProvider topicProvider = providerFactory.getProvider(TopicProvider.class);
 
         final RESTTopicQueryBuilderV1 queryBuilder = new RESTTopicQueryBuilderV1();
 //        queryBuilder.setTag(CSConstants.CONTENT_SPEC_TAG_ID, CommonFilterConstants.MATCH_TAG_STATE);
 //        // Ignore the following messed up content specs
 //        queryBuilder.setNotTopicIds(Arrays.asList(9003,9021,16241,16298,16407,18204));
-//        queryBuilder.setTopicIds(Arrays.asList(8740, 14737));
         queryBuilder.setTopicIds(Arrays.asList(8740));
 
         final CollectionWrapper<TopicWrapper> contentSpecs = topicProvider.getTopicsWithQuery(queryBuilder.getQuery());

@@ -30,8 +30,6 @@ public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws IOException {
-        //final RESTProviderFactory providerFactory = RESTProviderFactory.create(
-        //        "http://skynet-dev.usersys.redhat.com:8080/TopicIndex/seam/resource/rest/");
         final RESTProviderFactory providerFactory = RESTProviderFactory.create(
                 "http://localhost:8080/pressgang-ccms/rest/");
         final SQLGenerator generator = new SQLGenerator();
@@ -84,10 +82,6 @@ public class Main {
         zanataDetails.setServer("http://localhost:8280/zanata/");
         zanataDetails.setUsername("admin");
         zanataDetails.setToken("7002eace916783077727c1d5165f47ee");
-
-//        zanataDetails.setServer("https://translate.engineering.redhat.com/");
-//        zanataDetails.setUsername("lnewson");
-//        zanataDetails.setToken("02c45e26c4bcd4bb1b756e5edf94395d");
 
         return zanataDetails;
     }
